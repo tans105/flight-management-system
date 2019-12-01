@@ -50,4 +50,18 @@ public class LocationController {
         map.put("locations",locations);
         return "displayLocations";
     }
+
+    @RequestMapping("/updateLocation")
+    public String showLocation(@RequestParam int id, ModelMap map) {
+        Location loc = srvc.getLocationById(id);
+        map.put("location",loc);
+        return "editLocation";
+    }
+
+    @RequestMapping("/updateLoc")
+    public String updateLocation(@ModelAttribute Location loc, ModelMap map) {
+        srvc.update(loc);
+        map.addAttribute("locations",srvc.getLocations());
+        return "displayLocations";
+    }
 }
