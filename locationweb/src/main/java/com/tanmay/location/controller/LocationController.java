@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author Tanmay
@@ -30,5 +33,21 @@ public class LocationController {
         String msg = "Location saved successfully with id" + locationSaved.getId();
         modelMap.addAttribute("msg", msg);
         return "createLocation";
+    }
+
+    @RequestMapping("/displayLocations")
+    public String displayLocations(ModelMap map) {
+        List<Location> locations = srvc.getLocations();
+        map.put("locations",locations);
+        return "displayLocations";
+    }
+
+    @RequestMapping("/deleteLocation")
+    public String deleteLocation(@RequestParam int id, ModelMap map) {
+        Location loc = srvc.getLocationById(id);
+        srvc.delete(loc);
+        List<Location> locations = srvc.getLocations();
+        map.put("locations",locations);
+        return "displayLocations";
     }
 }
