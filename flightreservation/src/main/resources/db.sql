@@ -34,3 +34,13 @@ create table reservation(
 	flight_id integer references flight(id),
 	created timestamp default current_timestamp
 );
+
+
+insert into flight values (2,'1','AirAsia','Delhi','Hyderabad',current_date,current_timestamp);
+insert into flight values (3,'1','AirAsia','Delhi','Ahmedabad',current_date,current_timestamp);
+insert into flight values (4,'1','AirAsia','Delhi','Mumbai',current_date,current_timestamp);
+insert into flight values (5,'1','Indigo','Delhi','Ahmedabad',current_date,current_timestamp);
+insert into flight values (6,'1','Indigo','Delhi','Kolkata',current_date,current_timestamp);
+insert into flight values (7,'1','Indigo','Delhi','Mumbai',current_date,current_timestamp);
+insert into flight values (8,'1','Go','Delhi','Patna',current_date,current_timestamp);
+insert into flight values (9,'1','Go','Delhi','Ahmedabad',current_date,current_timestamp);
