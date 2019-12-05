@@ -28,7 +28,7 @@ create table passenger(
 
 create table reservation(
 	id serial not null primary key,
-	checked_in integer,
+	checked_in boolean,
 	number_of_bags integer,
 	passenger_id integer references passenger(id) on delete cascade,
 	flight_id integer references flight(id),

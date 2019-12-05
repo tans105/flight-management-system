@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
- * @author ta672972
+ * @author Tanmay
  * @date 05/12/19
  **/
 

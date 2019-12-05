@@ -15,7 +15,7 @@ public class Reservation extends AbstractEntity{
     private Integer numberOfBags;
 
     @OneToOne
-    private Passenger passengerId;
+    private Passenger passenger;
 
     @OneToOne
     private Flight flight;
@@ -37,12 +37,12 @@ public class Reservation extends AbstractEntity{
         this.numberOfBags = numberOfBags;
     }
 
-    public Passenger getPassengerId() {
-        return passengerId;
+    public Passenger getPassenger() {
+        return passenger;
     }
 
-    public void setPassengerId(Passenger passengerId) {
-        this.passengerId = passengerId;
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 
     public Flight getFlight() {
