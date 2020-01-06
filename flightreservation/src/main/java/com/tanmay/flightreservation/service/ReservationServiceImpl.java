@@ -7,6 +7,7 @@ import com.tanmay.flightreservation.entities.Reservation;
 import com.tanmay.flightreservation.repos.FlightRepository;
 import com.tanmay.flightreservation.repos.PassengerRepository;
 import com.tanmay.flightreservation.repos.ReservationRepository;
+import com.tanmay.flightreservation.util.PDFGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  **/
 
 @Service
-public class ReservationServiceImpl implements ReservationService{
+public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     FlightRepository flightRepo;
@@ -26,6 +27,9 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Autowired
     ReservationRepository resRepo;
+
+    @Autowired
+    PDFGenerator pdfGenerator;
 
     @Override
     public Reservation bookFlight(ReservationRequest request) {
@@ -49,6 +53,9 @@ public class ReservationServiceImpl implements ReservationService{
         reservation.setCheckedIn(true);
         reservation.setNumberOfBags(2);
 
-        return resRepo.save(reservation);
+        Reservation savedReservation = resRepo.save(reservation);
+        pdfGenerator.generateItinerary(savedReservation, "/Users/awata02/reservation_" + savedReservation.getId() + ".pdf");
+
+        return savedReservation;
     }
 }
